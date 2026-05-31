@@ -1,4 +1,30 @@
-# Byte-compiled / optimized / DLL files
+# Virtual Environment
+venv/
+env/
+ENV/
+.env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
