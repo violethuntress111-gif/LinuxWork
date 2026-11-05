@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Модуль для инициализации базы данных тестовыми данными
 Запуск: python app/init_db.py
@@ -7,7 +6,6 @@
 import sys
 import os
 
-# Добавляем корневую директорию проекта в путь Python
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.db.db import SessionLocal, create_tables, engine
@@ -21,16 +19,13 @@ def init_database():
     print("Инициализация базы данных книжного магазина")
     print("=" * 50)
     
-    # Создание таблиц (если они еще не созданы)
     print("\n1. Создание таблиц в базе данных...")
     create_tables()
     print("   ✓ Таблицы успешно созданы")
     
-    # Получаем сессию базы данных
     db = SessionLocal()
     
     try:
-        # Проверяем, есть ли уже данные в таблице категорий
         existing_categories = crud.get_all_categories(db)
         if existing_categories:
             print("\n   ⚠ В базе данных уже есть категории. Очистка существующих данных...")
@@ -41,7 +36,6 @@ def init_database():
         
         print("\n2. Добавление категорий товара...")
         
-        # Создание категорий
         category_fiction = crud.create_category(db, "Художественная литература")
         print(f"   ✓ Создана категория: {category_fiction.title} (ID: {category_fiction.id})")
         
@@ -53,7 +47,6 @@ def init_database():
         
         print("\n3. Добавление книг в категории...")
         
-        # Книги для категории "Художественная литература"
         print(f"\n   📚 Категория '{category_fiction.title}':")
         
         books_fiction = [
@@ -94,7 +87,6 @@ def init_database():
             )
             print(f"      - {book.title} (${book.price})")
         
-        # Книги для категории "Научная литература"
         print(f"\n   📚 Категория '{category_science.title}':")
         
         books_science = [
